@@ -27,7 +27,19 @@ This script allows bootstrapping a new substrate chain with the current state of
 6. Either run a full node for your blockchain locally(Recommended) or have an external endpoint handy.
 
 7. Run the script
-    * If using a local node, simply run the script using
+    * If using a local node,
+    *considering the script is being used for metablockchain-core*
+
+    add the following to your `devstart.sh` file in the `scripts folder` of the `metablockchain-core` repo :
+
+        `
+        --ws-external --rpc-external --rpc-cors all --rpc-methods=Unsafe --unsafe-ws-external
+        `
+    Update the `polkadot-api` to `^9.0.1` or run `npm update` in the `fork-off-substrate` folder.
+    We tested the script with `testnet` branch and it works fine.
+
+
+    Then simply run the script using
 
         ```bash
         npm start
@@ -53,12 +65,12 @@ The script can be tweaked and configured using various environment variables -
 
 | Environment Variable | Effects | Default value |
 | --- | --- | --- |
-| HTTP_RPC_ENDPOINT | HTTP RPC endpoint that should be used to query state | http://localhost:9933 |
+| HTTP_RPC_ENDPOINT | HTTP RPC endpoint that should be used to query state | <http://localhost:9933> |
 | FORK_CHUNKS_LEVEL | Determines how many chunks to split the RPC download in. Effect is exponential, recommended value for most is 1. You can try 0 for small chains and 2 for large chains for potential speed improvements | 1 |
 | ORIG_CHAIN | Chain to use as the original chain.  | `$default_of_the_binary` |
 | FORK_CHAIN | Chain to use as base for the forked chain.  | `dev` |
 | ALICE | If set, the script will replace the chain's sudo account with `//Alice` | `NULL` |
-| QUICK_MODE | If set, it parallelizes the data download from the RPC endpoint | `NULL` | 
+| QUICK_MODE | If set, it parallelizes the data download from the RPC endpoint | `NULL` |
 
 ## Read more
 
