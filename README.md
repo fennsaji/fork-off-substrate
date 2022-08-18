@@ -28,7 +28,7 @@ This script allows bootstrapping a new substrate chain with the current state of
 
 7. Run the script
     * If using a local node,
-    *considering the script is being used for metablockchain-core*
+    ***considering the script is being used for metablockchain-core***
 
     add the following to your `devstart.sh` file in the `scripts folder` of the `metablockchain-core` repo :
 
